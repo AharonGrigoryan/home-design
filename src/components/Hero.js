@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <Wrapper>
       <StaticImage
-        src="../images/mainBcg.png"
+        src="../images/spacejoy-q3Qd86sfaoU-unsplash.jpg"
         layout="fullWidth"
         className="img"
         alt="color palette"
@@ -14,7 +14,7 @@ const Hero = () => {
       <div className="info">
         <article>
           <h3>If You Can Dream It, We Can Create It</h3>
-          <h1>LET YOUR HOME BE INIQUE AND STYLISH</h1>
+          <h2>LET YOUR HOME BE INIQUE AND STYLISH</h2>
           <Link to="/projects">Projects</Link>
         </article>
       </div>
@@ -44,14 +44,14 @@ const Wrapper = styled.section`
     max-width: 800px;
     color: var(--clr-white);
     text-align: center;
-    h1 {
+    h2 {
       text-transform: uppercase;
       font-weight: 500;
       line-height: 1.25;
       margin: 2rem 0 3rem 0;
       letter-spacing: 3px;
     }
-    h3 {
+    h2 {
       font-weight: 400;
       font-family: "Caveat", cursive;
     }
@@ -76,7 +76,7 @@ const Wrapper = styled.section`
         font-size: 1.25rem;
         padding: 0.5rem 1.25rem;
       }
-      h1 {
+      h2 {
         letter-spacing: 5px;
       }
     }

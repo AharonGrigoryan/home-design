@@ -5,9 +5,41 @@ import styled from "styled-components";
 import { FaQuoteRight } from "react-icons/fa";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import { graphql, useStaticQuery } from "gatsby";
 
-const Slider = ({ customers = [] }) => {
+export const query = graphql`
+  query MyCustomers {
+    allAirtable(filter: { table: { eq: "Customers" } }) {
+      nodes {
+        data {
+          Name
+          quote
+          title
+          image {
+            localFiles {
+              childImageSharp {
+                gatsbyImageData(
+                  layout: FIXED
+                  placeholder: DOMINANT_COLOR
+                  width: 150
+                  height: 150
+                )
+              }
+            }
+          }
+        }
+        id
+      }
+    }
+  }
+`;
+
+const Slider = () => {
   const [index, setIndex] = React.useState(0);
+  const data = useStaticQuery(query);
+  const {
+    allAirtable: { nodes: customers },
+  } = data;
 
   const nextSlide = () => {
     setIndex((oldIndex) => {
