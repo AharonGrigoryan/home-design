@@ -9,6 +9,7 @@ import {
   Slider,
   GridProjects,
 } from "../components";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const HomePage = ({ data }) => {
   const {
@@ -28,7 +29,7 @@ export const query = graphql`
   query {
     allAirtable(
       filter: { table: { eq: "Projects" } }
-      limit: 5
+      limit: 6
       sort: { data: { Name: DESC } }
     ) {
       nodes {

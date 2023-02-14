@@ -9,7 +9,7 @@ import slugify from "slugify";
 
 const Projects = ({ projects: data, title, page }) => {
   const [projects, setProjects] = useState(data);
-
+  console.log(page);
   return (
     <Wrapper className="section">
       <Title title={title || "projects"} />
@@ -19,8 +19,8 @@ const Projects = ({ projects: data, title, page }) => {
           const { Name, type, image } = item.data;
           const slug = slugify(Name, { lower: true });
           return (
-            <Link to={`/${slug}`}>
-              <article key={id}>
+            <Link to={`/${slug}`} key={id}>
+              <article>
                 <div className="container">
                   <GatsbyImage
                     image={getImage(image.localFiles[0])}
@@ -114,6 +114,13 @@ const Wrapper = styled.section`
         height: 15rem;
       }
     }
+  }
+  .btn {
+    display: block;
+    width: 9rem;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 3rem;
   }
 `;
 export default Projects;

@@ -1,23 +1,57 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import { graphql, useStaticQuery } from "gatsby";
+import Carousel from "react-bootstrap/Carousel";
+
+export const query = graphql`
+  query MyCarousel {
+    allAirtable(filter: { table: { eq: "Carousel" } }) {
+      nodes {
+        data {
+          Name
+          image {
+            id
+            localFiles {
+              childImageSharp {
+                gatsbyImageData(placeholder: DOMINANT_COLOR, layout: FULL_WIDTH)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 const Hero = () => {
+  const data = useStaticQuery(query);
+  const {
+    allAirtable: { nodes: carousel },
+  } = data;
+  console.log(carousel);
   return (
     <Wrapper>
-      <StaticImage
-        src="../images/spacejoy-q3Qd86sfaoU-unsplash.jpg"
-        layout="fullWidth"
-        className="img"
-        alt="color palette"
-      />
-      <div className="info">
-        <article>
-          <h3>If You Can Dream It, We Can Create It</h3>
-          <h2>LET YOUR HOME BE INIQUE AND STYLISH</h2>
-          <Link to="/projects">Projects</Link>
-        </article>
-      </div>
+      <Carousel>
+        {carousel.map((item) => {
+          const {
+            data: { image, Name },
+          } = item;
+          const customerImg = getImage(image.localFiles[0]);
+          return (
+            <Carousel.Item key={image.id}>
+              <GatsbyImage image={customerImg} alt={Name} className="img" />
+              <div className="info">
+                <article>
+                  <h3>If you can dream it, we can create it</h3>
+                  <h1>let your home be inique and stylish</h1>
+                  <Link to="/projects">Projects</Link>
+                </article>
+              </div>
+            </Carousel.Item>
+          );
+        })}
+      </Carousel>
     </Wrapper>
   );
 };
@@ -27,7 +61,9 @@ const Wrapper = styled.section`
   margin-top: -5rem;
   position: relative;
   .img {
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: fill;
   }
   .info {
     position: absolute;
@@ -44,14 +80,14 @@ const Wrapper = styled.section`
     max-width: 800px;
     color: var(--clr-white);
     text-align: center;
-    h2 {
+    h1 {
       text-transform: uppercase;
       font-weight: 500;
       line-height: 1.25;
       margin: 2rem 0 3rem 0;
       letter-spacing: 3px;
     }
-    h2 {
+    h3 {
       font-weight: 400;
       font-family: "Caveat", cursive;
     }
@@ -76,7 +112,7 @@ const Wrapper = styled.section`
         font-size: 1.25rem;
         padding: 0.5rem 1.25rem;
       }
-      h2 {
+      h1 {
         letter-spacing: 5px;
       }
     }
