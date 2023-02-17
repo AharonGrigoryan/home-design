@@ -9,7 +9,7 @@ import slugify from "slugify";
 
 const Projects = ({ projects: data, title, page }) => {
   const [projects, setProjects] = useState(data);
-  console.log(page);
+
   return (
     <Wrapper className="section">
       <Title title={title || "projects"} />
@@ -56,7 +56,10 @@ const Wrapper = styled.section`
     /* safari workaround */
     grid-gap: 2rem;
     .img {
+      width: 100%;
       height: 100%;
+
+      position: initial;
       border-radius: var(--radius);
       transition: var(--transition);
     }
@@ -97,9 +100,10 @@ const Wrapper = styled.section`
         opacity: 1;
       }
     }
+
     @media (min-width: 768px) {
       .container {
-        height: 15rem;
+        height: 13rem;
       }
       grid-template-columns: 1fr 1fr;
     }

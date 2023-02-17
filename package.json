@@ -34,6 +34,8 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^4.7.1",
     "react-instantsearch-dom": "^6.39.0",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "slugify": "^1.6.5",
     "styled-components": "^5.3.6"
   },

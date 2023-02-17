@@ -57,6 +57,11 @@ module.exports = {
             tableName: `Carousel`,
             mapping: { image: `fileNode` },
           },
+          {
+            baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
+            tableName: `Slider`,
+            mapping: { image: `fileNode` },
+          },
         ],
       },
     },

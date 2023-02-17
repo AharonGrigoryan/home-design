@@ -1,15 +1,97 @@
-import React, { useEffect, useState } from 'react'
-import Title from './Title'
-import styled from 'styled-components'
-import base from './Airtable'
-import { FaVoteYea } from 'react-icons/fa'
+import React, { useEffect, useState } from "react";
+import Title from "./Title";
+import styled from "styled-components";
+import base from "./Airtable";
+import { BsHeart } from "react-icons/bs";
 
 const Survey = () => {
- 
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [like, setLike] = useState(false);
+
+  const getRecords = async () => {
+    const records = await base("Survey")
+      .select({})
+      .firstPage()
+      .catch((err) => console.log(err));
+    const newItems = records.map((record) => {
+      const { id, fields } = record;
+      return { id, fields };
+    });
+    setItems(newItems);
+    setLoading(false);
+  };
+
+  const giveVoid = async (id) => {
+    setLoading(true);
+    const tempItems = [...items].map((item) => {
+      if (item.id === id && like === false) {
+        let { id, fields } = item;
+        fields = { ...fields, votes: fields.votes + 1 };
+
+        setLike(true);
+        return { id, fields };
+      } else if (item.id === id && like === true) {
+        let { id, fields } = item;
+        fields = { ...fields, votes: fields.votes - 1 };
+        setLike(false);
+        return { id, fields };
+      } else {
+        return item;
+      }
+    });
+    const records = await base("Survey")
+      .update(tempItems)
+      .catch((err) => console.log(err));
+    const newItems = records.map((record) => {
+      const { id, fields } = record;
+      return { id, fields };
+    });
+
+    setItems(newItems);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getRecords();
+  }, []);
+
   return (
-   <h2>survey component</h2>
-  )
-}
+    <Wrapper className="section">
+      <div className="container">
+        <Title title="survey"></Title>
+        <h3>most important room in the house?</h3>
+
+        <ul>
+          {items.map((item) => {
+            const {
+              id,
+              fields: { name, votes },
+            } = item;
+            return (
+              <li key={id}>
+                <div className="key">{name.toUpperCase().substring(0, 2)}</div>
+                <div>
+                  <h4>{name}</h4>
+                  <p>{votes} votes</p>
+                </div>
+                <button
+                  disabled={loading ? true : false}
+                  onClick={() => giveVoid(id)}
+                >
+                  <BsHeart
+                    style={{ color: like ? "red" : "green" }}
+                    // onClick={() => setLike({ ...like, likeT: !like.likeT })}
+                  />
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   .container {
@@ -75,5 +157,5 @@ const Wrapper = styled.section`
       }
     }
   }
-`
-export default Survey
+`;
+export default Survey;

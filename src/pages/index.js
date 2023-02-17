@@ -10,6 +10,7 @@ import {
   GridProjects,
 } from "../components";
 import "bootstrap/dist/css/bootstrap.min.css";
+import CenterMode from "../components/CenterMode";
 
 const HomePage = ({ data }) => {
   const {
@@ -20,7 +21,9 @@ const HomePage = ({ data }) => {
       <Hero />
       <About />
       <Projects projects={projects} title="Latest projects" />
+      <Survey />
       <Slider />
+      <CenterMode />
     </Layout>
   );
 };
@@ -29,7 +32,7 @@ export const query = graphql`
   query {
     allAirtable(
       filter: { table: { eq: "Projects" } }
-      limit: 6
+      limit: 3
       sort: { data: { Name: DESC } }
     ) {
       nodes {

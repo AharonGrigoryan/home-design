@@ -29,7 +29,6 @@ const Hero = () => {
   const {
     allAirtable: { nodes: carousel },
   } = data;
-  console.log(carousel);
   return (
     <Wrapper>
       <Carousel>
