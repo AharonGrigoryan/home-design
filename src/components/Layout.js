@@ -4,7 +4,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-
+import "normalize.css";
 import React, { useContext } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";

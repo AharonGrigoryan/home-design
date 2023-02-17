@@ -41,6 +41,7 @@ const CenterMode = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
+    speed: 1000,
     pauseOnHover: true,
     responsive: [
       {
@@ -53,7 +54,6 @@ const CenterMode = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
         },
       },
       {
@@ -75,7 +75,7 @@ const CenterMode = () => {
           autoplay: true,
           speed: 1000,
           autoplaySpeed: 2000,
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -91,15 +91,16 @@ const CenterMode = () => {
           } = img;
           const slidImgae = getImage(image.localFiles[0]);
           return (
-            <div className="card">
-              <div className="card-top">
-                <GatsbyImage
-                  className="img"
-                  image={slidImgae}
-                  alt={Name}
-                  key={image.id}
-                />
-                <h1>{title}</h1>
+            <div className="image-container">
+              <GatsbyImage
+                className="img"
+                image={slidImgae}
+                alt={Name}
+                key={image.id}
+              />
+              <div className="gradient-overlay"></div>
+              <div className="text-container">
+                <p>{title}</p>
               </div>
             </div>
           );
@@ -113,7 +114,6 @@ const Wrapper = styled.div`
   width: 70%;
   margin: 0 auto;
   margin-top: 50px;
-  margin-bottom: 50px;
 
   .slick-slide > div {
     margin: 0 10px;
@@ -121,21 +121,97 @@ const Wrapper = styled.div`
   .slick-list {
     margin: 0 -10px;
   }
+  .image-container {
+    position: relative;
+    border-radius: 50px;
+  }
+
   .img {
-    border: 1px solid #fff;
-    border-radius: 8px;
-    overflow: 8px;
-    color: #fff;
+    display: block;
+    border-radius: 50px;
   }
-  .card-top h1 {
+
+  .gradient-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.6)
+    );
+    border-radius: 50px;
+  }
+
+  .text-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .text-container p {
+    color: aliceblue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(10%);
+  }
+  /* width: 70%;
+  margin: 0 auto;
+
+  .slick-slide > div {
+    margin: 0 10px;
+  }
+  .slick-list {
+    margin: 0 -10px;
+  }
+  .card {
+    overflow: hidden;
+    height: 15rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--clr-primary-7);
+  }
+  .card h1 {
     font-size: 1rem;
-    margin: 10px 20px;
   }
-  .card-top > .img {
+  .img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
   }
+  .info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  }
+  article {
+    width: 85vw;
+    max-width: 800px;
+    color: var(--clr-white);
+    text-align: center;
+    p {
+      text-transform: uppercase;
+      font-weight: 500;
+      line-height: 1.25;
+      margin: 2rem 0 3rem 0;
+      letter-spacing: 3px;
+    }
+    h3 {
+      font-weight: 400;
+      font-family: "Caveat", cursive;
+    }
+  } */
 `;
 
 export default CenterMode;
