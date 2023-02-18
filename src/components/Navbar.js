@@ -5,6 +5,7 @@ import { GoThreeBars } from "react-icons/go";
 import { Link } from "gatsby";
 import NavLink from "./NavLink";
 import { GatsbyContext } from "../context/context";
+import { window } from "browser-monads";
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
@@ -24,7 +25,6 @@ const Navbar = () => {
 
   useEffect(() => {
     showButton();
-    changeBackground();
   }, []);
 
   window.addEventListener("resize", showButton);
