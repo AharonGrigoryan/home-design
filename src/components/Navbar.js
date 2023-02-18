@@ -24,6 +24,7 @@ const Navbar = () => {
 
   useEffect(() => {
     showButton();
+    changeBackground();
   }, []);
 
   window.addEventListener("resize", showButton);
