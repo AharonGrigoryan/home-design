@@ -33,9 +33,10 @@ const CenterMode = () => {
   const {
     allAirtable: { nodes: slider },
   } = data;
-  //   console.log(slider);
+
   const settings = {
-    // dots: true,
+    dots: false,
+    arrows: false,
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -43,6 +44,7 @@ const CenterMode = () => {
     autoplaySpeed: 2000,
     speed: 1000,
     pauseOnHover: true,
+
     responsive: [
       {
         breakpoint: 1024,
@@ -82,39 +84,53 @@ const CenterMode = () => {
     ],
   };
   return (
-    <Wrapper>
+    <Wrapper className="section">
       <Title title="us instagram" />
-      <Slider {...settings}>
-        {slider.map((img) => {
-          const {
-            data: { image, title, Name },
-          } = img;
-          const slidImgae = getImage(image.localFiles[0]);
-          return (
-            <div className="image-container">
-              <GatsbyImage
-                className="img"
-                image={slidImgae}
-                alt={Name}
-                key={image.id}
-              />
-              <div className="gradient-overlay"></div>
-              <div className="text-container">
-                <p>{title}</p>
+      <div className="section-center">
+        <Slider {...settings}>
+          {slider.map((img) => {
+            const {
+              data: { image, title, Name },
+            } = img;
+            const slidImgae = getImage(image.localFiles[0]);
+            return (
+              <div className="image-container">
+                <GatsbyImage
+                  className="img"
+                  image={slidImgae}
+                  alt={Name}
+                  key={image.id}
+                />
+                <div className="gradient-overlay"></div>
+                <div className="text-container">
+                  <p>{title}</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </Slider>
+            );
+          })}
+        </Slider>
+
+        <div className="instagram-button">
+          <a href="https://www.instagram.com/">@instagram</a>
+        </div>
+      </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  width: 70%;
-  margin: 0 auto;
-  margin-top: 50px;
+  background: var(--clr-grey-10);
 
+  .section-center {
+    margin-top: 4rem;
+    width: 80vw;
+    height: 350px;
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+    /* display: flex; */
+    /* overflow: hidden; */
+  }
   .slick-slide > div {
     margin: 0 10px;
   }
@@ -128,7 +144,7 @@ const Wrapper = styled.div`
 
   .img {
     display: block;
-    border-radius: 50px;
+    border-radius: 30px;
   }
 
   .gradient-overlay {
@@ -142,7 +158,7 @@ const Wrapper = styled.div`
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0.6)
     );
-    border-radius: 50px;
+    border-radius: 30px;
   }
 
   .text-container {
@@ -161,6 +177,44 @@ const Wrapper = styled.div`
     right: 0;
     transform: translateY(10%);
   }
+  a {
+    display: inline-block;
+    color: #ffffff;
+    background: #797979;
+    padding: 6px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  .instagram-button {
+    margin-top: 1rem;
+    /* margin-bottom: 0.25rem; */
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  /* @media (min-width: 768px) {
+    .image-container {
+      height: 13rem;
+    }
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 992px) {
+    .image-container {
+      height: 12.5rem;
+    }
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media (min-width: 1200px) {
+    .image-container {
+      height: 15rem;
+    }
+  } */
+  /* a {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    color: var(--clr-primary-5);
+  } */
+
   /* width: 70%;
   margin: 0 auto;
 
