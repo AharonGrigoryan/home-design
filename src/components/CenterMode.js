@@ -38,11 +38,11 @@ const CenterMode = () => {
     dots: false,
     arrows: false,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    speed: 1000,
+    speed: 500,
     pauseOnHover: true,
 
     responsive: [
@@ -51,8 +51,8 @@ const CenterMode = () => {
         settings: {
           pauseOnHover: true,
           autoplay: true,
-          speed: 1000,
           autoplaySpeed: 2000,
+          speed: 500,
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
@@ -65,7 +65,8 @@ const CenterMode = () => {
           autoplay: true,
           speed: 1000,
           autoplaySpeed: 2000,
-          slidesToShow: 2,
+          speed: 500,
+          slidesToShow: 3,
           slidesToScroll: 2,
           initialSlide: 2,
         },
@@ -75,9 +76,9 @@ const CenterMode = () => {
         settings: {
           pauseOnHover: true,
           autoplay: true,
-          speed: 1000,
           autoplaySpeed: 2000,
-          slidesToShow: 1,
+          speed: 500,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -119,12 +120,11 @@ const CenterMode = () => {
 };
 
 const Wrapper = styled.div`
-  background: var(--clr-grey-10);
-
+  width: 100%;
   .section-center {
     margin-top: 4rem;
-    width: 80vw;
-    height: 350px;
+    width: 95%;
+    height: 250px;
     max-width: 800px;
     text-align: center;
     position: relative;
@@ -153,11 +153,7 @@ const Wrapper = styled.div`
     left: 0;
     width: 100%;
     height: 50%;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.6)
-    );
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(60, 60, 60));
     border-radius: 30px;
   }
 
@@ -170,6 +166,8 @@ const Wrapper = styled.div`
   }
 
   .text-container p {
+    font-family: "Caveat", cursive;
+    font-size: 0.8rem;
     color: aliceblue;
     position: absolute;
     bottom: 0;
