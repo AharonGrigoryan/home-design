@@ -77,7 +77,7 @@ const CenterMode = () => {
           autoplay: true,
           speed: 1000,
           autoplaySpeed: 2000,
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
