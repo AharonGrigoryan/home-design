@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { window } from "browser-monads";
 
 const BackToTop = () => {
   const [bactToTop, setBacktoTop] = useState(false);
