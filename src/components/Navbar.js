@@ -84,6 +84,14 @@ const Wrapper = styled.nav`
   .nav-center.active {
     position: fixed;
     background: linear-gradient(90deg, hsl(21, 84%, 25%), rgba(0, 0, 0, 0));
+    @media (min-width: 800px) {
+      height: 3rem;
+    }
+    li {
+      padding: 0;
+
+      position: relative;
+    }
   }
 
   .toggle-btn {

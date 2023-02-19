@@ -11,6 +11,8 @@ import {
 } from "../components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CenterMode from "../components/CenterMode";
+import YoutubeVideo from "../components/YoutubeVideo";
+import BackToTop from "../components/BackToTop";
 
 const HomePage = ({ data }) => {
   const {
@@ -24,6 +26,8 @@ const HomePage = ({ data }) => {
       <Survey />
       <Slider />
       <CenterMode />
+      <YoutubeVideo />
+      <BackToTop />
     </Layout>
   );
 };

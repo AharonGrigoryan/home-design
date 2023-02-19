@@ -38,7 +38,7 @@ const CenterMode = () => {
     dots: false,
     arrows: false,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -124,12 +124,17 @@ const Wrapper = styled.div`
   .section-center {
     margin-top: 4rem;
     width: 95%;
-    height: 250px;
-    max-width: 800px;
+    height: 450px;
+    max-width: 100%;
     text-align: center;
     position: relative;
     /* display: flex; */
     /* overflow: hidden; */
+  }
+  @media (max-width: 760px) {
+    .section-center {
+      height: 250px;
+    }
   }
   .slick-slide > div {
     margin: 0 10px;
@@ -189,81 +194,6 @@ const Wrapper = styled.div`
     text-align: center;
     padding: 0 20px;
   }
-
-  /* @media (min-width: 768px) {
-    .image-container {
-      height: 13rem;
-    }
-    grid-template-columns: 1fr 1fr;
-  }
-  @media (min-width: 992px) {
-    .image-container {
-      height: 12.5rem;
-    }
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  @media (min-width: 1200px) {
-    .image-container {
-      height: 15rem;
-    }
-  } */
-  /* a {
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    color: var(--clr-primary-5);
-  } */
-
-  /* width: 70%;
-  margin: 0 auto;
-
-  .slick-slide > div {
-    margin: 0 10px;
-  }
-  .slick-list {
-    margin: 0 -10px;
-  }
-  .card {
-    overflow: hidden;
-    height: 15rem;
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--radius);
-    background: var(--clr-primary-7);
-  }
-  .card h1 {
-    font-size: 1rem;
-  }
-  .img {
-    width: 100%;
-    height: 100%;
-  }
-  .info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  }
-  article {
-    width: 85vw;
-    max-width: 800px;
-    color: var(--clr-white);
-    text-align: center;
-    p {
-      text-transform: uppercase;
-      font-weight: 500;
-      line-height: 1.25;
-      margin: 2rem 0 3rem 0;
-      letter-spacing: 3px;
-    }
-    h3 {
-      font-weight: 400;
-      font-family: "Caveat", cursive;
-    }
-  } */
 `;
 
 export default CenterMode;

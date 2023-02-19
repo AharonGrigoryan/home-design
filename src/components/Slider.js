@@ -214,15 +214,3 @@ const Wrapper = styled.div`
   }
 `;
 export default Slider;
-
-// {carousel.map((item) => {
-//       const {
-//         data: { image, Name },
-//       } = item;
-//       const customerImg = getImage(image.localFiles[0]);
-//       return (
-//         <GatsbyImage
-//         image={customerImg}
-//         alt={Name}
-//         className="img"
-//         ></GatsbyImage>
