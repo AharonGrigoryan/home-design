@@ -2,6 +2,8 @@ import React from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import { Layout, Projects, Algolia } from "../components";
+import YoutubeVideo from "../components/YoutubeVideo";
+import BackToTop from "../components/BackToTop";
 
 const ProjectsPage = ({ data }) => {
   const {
@@ -11,6 +13,8 @@ const ProjectsPage = ({ data }) => {
     <Wrapper>
       <Layout>
         <Projects title="our projects" projects={projects} page />
+        <YoutubeVideo />
+        <BackToTop />
       </Layout>
     </Wrapper>
   );
