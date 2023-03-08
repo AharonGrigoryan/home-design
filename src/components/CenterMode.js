@@ -95,13 +95,8 @@ const CenterMode = () => {
             } = img;
             const slidImgae = getImage(image.localFiles[0]);
             return (
-              <div className="image-container">
-                <GatsbyImage
-                  className="img"
-                  image={slidImgae}
-                  alt={Name}
-                  key={image.id}
-                />
+              <div className="image-container" key={image.id}>
+                <GatsbyImage className="img" image={slidImgae} alt={Name} />
                 <div className="gradient-overlay"></div>
                 <div className="text-container">
                   <p>{title}</p>

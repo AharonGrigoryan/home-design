@@ -1,13 +1,38 @@
-import React from 'react'
-import Title from './Title'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import styled from 'styled-components'
-import { Link } from 'gatsby'
+import React from "react";
+import Title from "./Title";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import styled from "styled-components";
+import { Link } from "gatsby";
 const GridProjects = ({ projects, title }) => {
   return (
-    <h2>grid projects</h2>
-  )
-}
+    <Wrapper>
+      <Title title={title || "Projects"} />
+      <div className="tile-layout">
+        {projects.map((project, index) => {
+          const { id } = project;
+          const { Name, type } = project.data;
+          const image = project.data.image.localFiles[0];
+          return (
+            <article key={id} className={`div-${index}`}>
+              <GatsbyImage
+                image={getImage(image)}
+                alt={Name}
+                className="img"
+              ></GatsbyImage>
+              <div className="info">
+                <p>-{type}-</p>
+                <h3>{Name}</h3>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      <Link to="/projects" className="btn">
+        All Projects
+      </Link>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   background: var(--clr-grey-10);
@@ -70,12 +95,12 @@ const Wrapper = styled.section`
       grid-auto-rows: 250px;
     }
   }
-  @media (min-width: 1200px) {
+  @media (min-width: 1100px) {
     .tile-layout {
       display: grid;
       grid-template-areas:
-        'a b b'
-        'a c d';
+        "a b b"
+        "a c d";
       .div-0 {
         grid-area: a;
       }
@@ -97,6 +122,6 @@ const Wrapper = styled.section`
     margin: 0 auto;
     margin-top: 3rem;
   }
-`
+`;
 
-export default GridProjects
+export default GridProjects;

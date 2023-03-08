@@ -10,9 +10,20 @@ import slugify from "slugify";
 const Projects = ({ projects: data, title, page }) => {
   const [projects, setProjects] = useState(data);
 
+  const setBackToAll = () => {
+    setProjects(data);
+  };
+
   return (
     <Wrapper className="section">
       <Title title={title || "projects"} />
+      {page && (
+        <SearchButtons
+          projects={data}
+          setProjects={setProjects}
+          setBackToAll={setBackToAll}
+        />
+      )}
       <div className="section-center">
         {projects.map((item) => {
           const { id } = item;
@@ -47,7 +58,7 @@ const Projects = ({ projects: data, title, page }) => {
 };
 
 const Wrapper = styled.section`
-  background: var(--clr-grey-10);
+  /* background: var(--clr-grey-10); */
   .section-center {
     margin-top: 4rem;
     max-width: var(--max-width);

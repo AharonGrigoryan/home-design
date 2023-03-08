@@ -11,7 +11,7 @@ import {
 } from "../components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CenterMode from "../components/CenterMode";
-
+import YoutubeVideo from "../components/YoutubeVideo";
 import BackToTop from "../components/BackToTop";
 
 const HomePage = ({ data }) => {
@@ -21,12 +21,13 @@ const HomePage = ({ data }) => {
   return (
     <Layout>
       <Hero />
+
       <About />
-      <Projects projects={projects} title="Latest projects" />
+      <GridProjects projects={projects} title="Latest projects" />
       <Survey />
       <Slider />
       <CenterMode />
-
+      <YoutubeVideo />
       <BackToTop />
     </Layout>
   );
@@ -36,7 +37,7 @@ export const query = graphql`
   query {
     allAirtable(
       filter: { table: { eq: "Projects" } }
-      limit: 3
+      limit: 4
       sort: { data: { Name: DESC } }
     ) {
       nodes {
