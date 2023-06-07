@@ -37,6 +37,6 @@ exports.createPages = async ({ graphql, actions }) => {
     pageTemplate: "src/templates/temp.js",
     pageLength: 6, // This is optional and defaults to 10 if not used
     pathPrefix: "blog", // This is optional and defaults to an empty string if not used
-    context: { data: result.data.allAirtable.nodes }, // This is optional and defaults to an empty object if not used
+    context: { alldata: result.data.allAirtable.nodes }, // This is optional and defaults to an empty object if not used
   });
 };

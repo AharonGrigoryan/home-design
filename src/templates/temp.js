@@ -5,13 +5,19 @@ import { Link } from "gatsby";
 import { useState } from "react";
 import FsLightbox from "fslightbox-react";
 
-import SearchButtons from "../components/SearchButtons";
 import { Layout } from "../components";
+import SearchButtons from "../components/SearchButtons";
 
 const BlogPgae = ({ pageContext }) => {
-  const { pageCount, group, index, first, last, data } = pageContext;
+  const { pageCount, group, index, first, last, alldata } = pageContext;
 
   const [projects, setProjects] = useState(group);
+
+  console.log("projects", projects);
+
+  const setBackToAll = () => {
+    setProjects(group);
+  };
 
   const previousIndex = index - 1;
   const nextIndex = index + 1;
@@ -41,16 +47,12 @@ const BlogPgae = ({ pageContext }) => {
     });
   }
 
-  const setBackToAll = () => {
-    setProjects(group);
-  };
-
   return (
     <Layout>
       <Wrapper className="section">
         {pageCount && (
           <SearchButtons
-            projects={data}
+            projects={alldata}
             setProjects={setProjects}
             setBackToAll={setBackToAll}
           />
@@ -81,9 +83,9 @@ const BlogPgae = ({ pageContext }) => {
           })}
         </div>
         {!!pageCount && !first && (
-          <Link to={previousPageUrl}>Previous Paga </Link>
+          <Link to={previousPageUrl}>Previous Paga</Link>
         )}
-        {!!pageCount && !last && <Link to={nextPageUrl}>Next Paga </Link>}
+        {!!pageCount && !last && <Link to={nextPageUrl}>Next Paga</Link>}
         <FsLightbox
           toggler={lightboxController.toggler}
           sourceIndex={lightboxController.sourceIndex}

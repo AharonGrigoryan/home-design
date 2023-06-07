@@ -69,7 +69,7 @@ const Navbar = () => {
 
 const Wrapper = styled.nav`
   position: relative;
-  background: var(--clr-primary-7);
+  background: transparent;
   z-index: 1;
   height: 5rem;
   display: flex;

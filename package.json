@@ -41,7 +41,8 @@
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "slugify": "^1.6.5",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "yet-another-react-lightbox": "^2.6.1"
   },
   "repository": {
     "type": "git",
@@ -49,5 +50,8 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "devDependencies": {
+    "gatsby-plugin-netlify": "^5.1.0"
   }
 }

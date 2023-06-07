@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CenterMode from "../components/CenterMode";
 import YoutubeVideo from "../components/YoutubeVideo";
 import BackToTop from "../components/BackToTop";
+import YetAnother from "../components/YetAnother";
 
 const HomePage = ({ data }) => {
   const {
@@ -21,7 +22,7 @@ const HomePage = ({ data }) => {
   return (
     <Layout>
       <Hero />
-
+      <YetAnother />
       <About />
       <GridProjects projects={projects} title="Latest projects" />
       <Survey />

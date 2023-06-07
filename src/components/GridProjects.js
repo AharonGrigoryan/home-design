@@ -35,13 +35,13 @@ const GridProjects = ({ projects, title }) => {
 };
 
 const Wrapper = styled.section`
-  background: var(--clr-grey-10);
+  background: #f1f5f8;
   padding: 5rem 0;
   .tile-layout {
     margin-top: 2rem;
     display: grid;
     width: 90vw;
-    max-width: var(--max-width);
+    max-width: 1170px;
     margin: 0 auto;
     gap: 1rem;
     /* safari workaround */
@@ -52,14 +52,14 @@ const Wrapper = styled.section`
   /* GOTCHA!!!!! */
   .img {
     height: 100%;
-    border-radius: var(--radius);
-    transition: var(--transition);
+    border-radius: 0.25rem;
+    transition: all 0.3s linear;
   }
   article {
     position: relative;
     overflow: hidden;
-    border-radius: var(--radius);
-    background: var(--clr-primary-7);
+    border-radius: 0.25rem;
+    background: hsl(21, 65%, 59%);
     &:hover .img {
       opacity: 0.2;
     }
@@ -70,12 +70,12 @@ const Wrapper = styled.section`
       transform: translate(-50%, -50%);
       width: 100%;
       opacity: 0;
-      transition: var(--transition);
-      color: var(--clr-white);
+      transition: all 0.3s linear;
+      color: #fff;
       text-align: center;
       p {
         margin-bottom: 0.5rem;
-        color: var(--clr-white);
+        color: #fff;
         text-transform: uppercase;
       }
     }
