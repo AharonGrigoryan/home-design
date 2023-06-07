@@ -52,6 +52,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "devDependencies": {
-    "gatsby-plugin-netlify": "^5.1.0"
+    "gatsby-plugin-netlify": "^5.1.0",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.31"
   }
 }

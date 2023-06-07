@@ -23,6 +23,7 @@ module.exports = {
     twitterUsername: `@john_smilga`,
   },
   plugins: [
+    "gatsby-plugin-webpack-bundle-analyser-v2",
     "gatsby-plugin-netlify",
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
